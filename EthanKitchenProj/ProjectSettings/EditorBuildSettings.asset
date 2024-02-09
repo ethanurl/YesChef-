@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: c543568a22519424d9090f316db8fbb8
+  - enabled: 1
+    path: Assets/Scenes/Fryer.unity
+    guid: cc3a9ba013fbb2f49847fed800259325
+  - enabled: 1
+    path: Assets/Scenes/Reach-In.unity
+    guid: 4c9ae074d6fb5c3469163f9d03d95119
+  - enabled: 1
+    path: Assets/Scenes/Butcher.unity
+    guid: 246f0428f39661f488f04080df5c8e80
+  - enabled: 1
+    path: Assets/Scenes/Door.unity
+    guid: 118a6856e83dda4469bd03e93082602d
+  - enabled: 1
+    path: Assets/Scenes/Expeditor.unity
+    guid: cc4d015fb976ab04b9d09cba903eaf38
+  - enabled: 1
+    path: Assets/Scenes/Dishwasher.unity
+    guid: 7549474e8cd1d5d41a4743ef122f529e
+  - enabled: 1
+    path: Assets/Scenes/Cold Prep.unity
+    guid: d9899d491f9274b499bacd9f70015183
+  - enabled: 1
+    path: Assets/Scenes/Pastry.unity
+    guid: e34da17739a2cd4469f29b3458adec88
+  - enabled: 1
+    path: Assets/Scenes/Hot Prep.unity
+    guid: 3bca15a4bf7f8624bb126fa65e8fd102
+  - enabled: 1
+    path: Assets/Scenes/Grill.unity
+    guid: fb7717ebb92e02f44bb428ab13bfb80f
+  - enabled: 1
+    path: Assets/Scenes/Trash.unity
+    guid: 074b445dabf13d64ba049de7230063dd
+  - enabled: 1
+    path: Assets/Scenes/Oven.unity
+    guid: ede37b8cdf6a1904e91b40a98aececb8
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 4bad0297bb0ced0438b82bbd9e916ff3
+  - enabled: 1
+    path: Assets/Scenes/Pause.unity
+    guid: c564943b2943a14468b6eb3ea8840da8
+  - enabled: 1
+    path: Assets/Scenes/OptionsMenu.unity
+    guid: 68a065bc6b81ed946b39cac51991e530
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 6419a53ec4a9d2d4695bf65f81a16e40
+  - enabled: 1
+    path: Assets/Scenes/GameOverLose.unity
+    guid: 60d45f438811135408f063b7d6d9fef7
+  - enabled: 1
+    path: Assets/Scenes/GameOverWin.unity
+    guid: 5a082c09beb022e4e8ebf360107965a4
+  m_configObjects: {}

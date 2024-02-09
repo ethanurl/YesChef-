@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e91de41c5a960bf478b915034de23573
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - redcarpet: {fileID: 2100000, guid: 81c716ec17ebbdb4ab5a08932a37c7c9, type: 2}
+  - emptymat: {fileID: 2100000, guid: adb083014104e6948affdc00b72c4407, type: 2}
+  - changer: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
