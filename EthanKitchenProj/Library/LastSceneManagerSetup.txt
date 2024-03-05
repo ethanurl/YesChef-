@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Butcher.unity
+- path: Assets/Scenes/Trash.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

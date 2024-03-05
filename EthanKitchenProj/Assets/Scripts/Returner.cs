@@ -15,6 +15,7 @@ public class Returner : MonoBehaviour
             LoadLevel();
         }
         if (completed == true){
+            PlayerStats.Completed += 1;
             completed = false;
             LoadLevel();
         }

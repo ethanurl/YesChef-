@@ -10,7 +10,6 @@ using UnityEngine.UIElements;
 public class Rounds : MonoBehaviour
 {
     public Material redcarpet;
-    public Material emptymat;
     public int round = 1;
     public int roundtimer = 5;
     public int sceneswap = -1;
@@ -20,14 +19,20 @@ public class Rounds : MonoBehaviour
     public GameObject child;
     public Transition transition;
     public Timer timer;
+    public Canvas pausemenu;
     public int errors = 0;
     public int errorstotal = 5;
     public int completed = 0;
     public int completetotal = 10;
+    private Material currmat;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerStats.Completed == 0)
+        {
+            PlayerStats.Time = 90;
+        }
         if (newrandoms == null)
         Debug.Log("ok");
         newrandoms = GameObject.FindGameObjectsWithTag("Interactable");
@@ -38,17 +43,33 @@ public class Rounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        errors = PlayerStats.Errors;
+        completed = PlayerStats.Completed;
+        timer.elapsedtime = PlayerStats.Time;
+        //These are the win/loss condition. 
+        //If errors is whatever the total is, the player loses!
+        //If completed, the player wins.
+        if (errors == errorstotal)
+        {
+            transition.newscene = 17;
+            PlayerStats.Errors = 0;
+            PlayerStats.Completehold = 0;
+            PlayerStats.Completed = 0;
+            PlayerStats.Time = 0;
+        }
+        if (completed == completetotal)
+        {
+            transition.newscene = 18;
+            PlayerStats.Errors = 0;
+            PlayerStats.Completehold = 0;
+            PlayerStats.Completed = 0;
+            PlayerStats.Time = 0;
+        }
         if (Time.realtimeSinceStartupAsDouble/round > roundtimer)
         {
-            if (PlayerStats.Completehold != PlayerStats.Completed){
-                    PlayerStats.Completed = PlayerStats.Completehold;
-                }
             if (changer)
             {
-                errors = PlayerStats.Errors;
-                completed = PlayerStats.Completed;
-                timer.elapsedtime = PlayerStats.Time;
-                changer.GetComponent<MeshRenderer>().material = emptymat;
+                changer.GetComponent<MeshRenderer>().material = currmat;
                 changerchild.GetComponent<BoxCollider>().enabled = false;
                 child.GetComponent<MeshRenderer>().enabled = false;
             }
@@ -56,6 +77,7 @@ public class Rounds : MonoBehaviour
             changer = newrandoms[rand];
             sceneswap = rand + 1;
             changerchild = changer.gameObject.transform.GetChild(0).gameObject;
+            currmat = changer.GetComponent<MeshRenderer>().material;
             changer.GetComponent<MeshRenderer>().material = redcarpet;
             changerchild.GetComponent<BoxCollider>().enabled = true;
             round += 1;
@@ -63,36 +85,17 @@ public class Rounds : MonoBehaviour
         if (child.GetComponent<MeshRenderer>().enabled == true){
             if (Input.GetKeyDown("e"))
                 {
-                    completed += 1;
-                    if (errors == errorstotal)
-                    {
-                        transition.newscene = 17;
-                        PlayerStats.Errors = 0;
-                        PlayerStats.Completehold = 0;
-                        PlayerStats.Completed = 0;
-                        PlayerStats.Time = 0;
-                    }
-                    if (completed == completetotal)
-                    {
-                        transition.newscene = 18;
-                        PlayerStats.Errors = 0;
-                        PlayerStats.Completehold = 0;
-                        PlayerStats.Completed = 0;
-                        PlayerStats.Time = 0;
-                    }
-                    else
-                    {
-                        child.GetComponent<MeshRenderer>().enabled =  false;
-                        PlayerStats.Errors = errors;
-                        PlayerStats.Completehold = completed;
-                        transition.newscene = sceneswap;
-                    }
+                    child.GetComponent<MeshRenderer>().enabled =  false;
+                    PlayerStats.Errors = errors;
+                    PlayerStats.Completehold = completed;
+                    transition.newscene = sceneswap;
                 }
         }
         if (Input.GetKeyDown("escape")){
             PlayerStats.Errors = errors;
             PlayerStats.Completehold = completed;
-            transition.newscene = 14;
+            Time.timeScale = 0;
+
         }
     }
 }

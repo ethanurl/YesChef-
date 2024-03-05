@@ -13,13 +13,13 @@ public class Interactables : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if (other == MyPlayer.GetComponent<BoxCollider>()){
+        if (other == MyPlayer.GetComponent<CapsuleCollider>()){
             MyPlayer.child.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 
     void OnTriggerExit(Collider other){
-        if (other == MyPlayer.GetComponent<BoxCollider>()){
+        if (other == MyPlayer.GetComponent<CapsuleCollider>()){
             MyPlayer.child.GetComponent<MeshRenderer>().enabled = false;
         }
     }
