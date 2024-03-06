@@ -22,7 +22,7 @@ public class TrashScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (wcomplete > 25)
         {wcomplete = 25;}
@@ -36,7 +36,7 @@ public class TrashScript : MonoBehaviour
         Debug.Log(completeness);
         if (Input.GetKey("w"))
         {
-            slt.Translate(Vector3.up/150);
+            slt.Translate(Vector3.up/25);
             if ((slt.position.x > -2.2 && slt.position.x < -1.8 && slt.position.y >-0.4 && slt.position.y < 2.4) || (slt.position.x > 1.8 && slt.position.x < 2.2 && slt.position.y < 2.4 && slt.position.y > -0.4))
             {
                 if (wcomplete < 25)
@@ -47,7 +47,7 @@ public class TrashScript : MonoBehaviour
         }
         if (Input.GetKey("s"))
         {
-            slt.Translate(Vector3.down/150);
+            slt.Translate(Vector3.down/25);
             if ((slt.position.x > -2.2 && slt.position.x < -1.8 && slt.position.y >-0.4 && slt.position.y < 2.4) || (slt.position.x > 1.8 && slt.position.x < 2.2 && slt.position.y < 2.4 && slt.position.y > -0.4))
             {
                 if (scomplete < 25)
@@ -58,7 +58,7 @@ public class TrashScript : MonoBehaviour
         }
         if (Input.GetKey("a"))
         {
-            slt.Translate(Vector3.left/150);
+            slt.Translate(Vector3.left/25);
             if ((slt.position.x > -2.2 && slt.position.x < 2.2 && slt.position.y >-0.4 && slt.position.y < 0) || (slt.position.x > -2.2 && slt.position.x < 2.2 && slt.position.y < 2.4 && slt.position.y > 2))
             {
                 if (acomplete < 25)
@@ -69,7 +69,7 @@ public class TrashScript : MonoBehaviour
         }
         if (Input.GetKey("d"))
         {
-            slt.Translate(Vector3.right/150);
+            slt.Translate(Vector3.right/25);
             if ((slt.position.x > -2.2 && slt.position.x < 2.2 && slt.position.y >-0.4 && slt.position.y < 0) || (slt.position.x > -2.2 && slt.position.x < 2.2 && slt.position.y < 2.4 && slt.position.y > 2))
             {
                 if (dcomplete < 25)
