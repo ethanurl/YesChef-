@@ -81,6 +81,7 @@
     <Compile Include="Assets\Resources\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\MiniGames\MiniGameScripts\ExpeditorScript.cs" />
     <Compile Include="Assets\Scripts\Returner.cs" />
+    <Compile Include="Assets\Scripts\MusicScript.cs" />
     <Compile Include="Assets\MiniGames\MiniGameScripts\ButcherScrip.cs" />
     <Compile Include="Assets\Resources\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Resources\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />

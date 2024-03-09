@@ -33,7 +33,6 @@ public class TrashScript : MonoBehaviour
         if (dcomplete > 25)
         {dcomplete = 25;}
         completeness = wcomplete + scomplete + dcomplete + acomplete;
-        Debug.Log(completeness);
         if (Input.GetKey("w"))
         {
             slt.Translate(Vector3.up/25);
@@ -78,15 +77,17 @@ public class TrashScript : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKey("e"))
         {
             if (completeness >= 88 && donezo == true)
             {
+                Debug.Log("yomama");
                 returner.completed = true;
                 donezo = false;
             }
-            if (completeness <88 && donezo == true)
+            if (completeness < 88 && donezo == true)
             {
+                Debug.Log("noscore");
                 PlayerStats.Errors += 1;
                 returner.completed = true;
                 donezo = false;

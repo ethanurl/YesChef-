@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 149225674}
   - component: {fileID: 149225673}
   - component: {fileID: 149225677}
+  - component: {fileID: 149225678}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -244,6 +245,20 @@ MonoBehaviour:
   transition: {fileID: 545695172}
   transitiontime: 1
   completed: 0
+--- !u!114 &149225678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149225671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b51a2d388815124a846beccda5b4a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  returner: {fileID: 149225677}
+  slicer: {fileID: 1784610553}
 --- !u!1 &500461698
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,7 +843,6 @@ GameObject:
   - component: {fileID: 1282676486}
   - component: {fileID: 1282676485}
   - component: {fileID: 1282676484}
-  - component: {fileID: 1282676487}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -886,20 +900,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1282676487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1282676483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b51a2d388815124a846beccda5b4a53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  returner: {fileID: 149225677}
-  slicer: {fileID: 1784610553}
 --- !u!1 &1784610553
 GameObject:
   m_ObjectHideFlags: 0
