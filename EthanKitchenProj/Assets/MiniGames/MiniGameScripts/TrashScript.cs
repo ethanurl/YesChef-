@@ -81,6 +81,7 @@ public class TrashScript : MonoBehaviour
         if (completeness >= 88)
         {
             trashcan.sprite = trashlined;
+            trashcan.color = Color.green;
         }
         if (Input.GetKey("e"))
         {

@@ -28,7 +28,7 @@ public class ColdPrepScript : MonoBehaviour
     {
         if (timer.value < timer.maxValue)
         {
-            timer.value += Time.deltaTime/7;
+            timer.value += Time.deltaTime/10;
         }
         if (timer.value >= timer.maxValue)
         {

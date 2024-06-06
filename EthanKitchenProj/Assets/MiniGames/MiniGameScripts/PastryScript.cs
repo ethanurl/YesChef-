@@ -22,6 +22,7 @@ public class PastryScript : MonoBehaviour
     public Sprite pizza4;
     public Sprite pizzafin;
     public RectTransform roller;
+    public Image arrow;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +41,7 @@ public class PastryScript : MonoBehaviour
                 valsreached += 1;
                 topvalreached = true;
                 botvalreached = false;
+                arrow.rectTransform.eulerAngles = new Vector3(0, 0, 0);
             }
         }
         if (botvalreached == false)
@@ -50,6 +52,7 @@ public class PastryScript : MonoBehaviour
                 valsreached += 1;
                 botvalreached = true;
                 topvalreached = false;
+                arrow.rectTransform.eulerAngles = new Vector3(0, 0, 180);
             }
         }
         

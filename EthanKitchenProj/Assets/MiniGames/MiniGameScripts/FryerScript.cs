@@ -49,11 +49,11 @@ public class FryerScript : MonoBehaviour
         }
         if (leftsl.value >= lefthighval)
         {
-            leftim.enabled = true;
+            leftim.color = new Color(0.8f, 0.12f, 0.12f);
         }
         if (rightsl.value >= righthighval)
         {
-            rightim.enabled = true;
+            rightim.color = new Color(0.8f, 0.12f, 0.12f);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
