@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HotPrepScript : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class HotPrepScript : MonoBehaviour
     public TextMeshProUGUI text4;
     public Returner completer;
     private bool donezo = true;
-
+    public UnityEngine.UI.Image table;
+    public Sprite finishsprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,10 +50,11 @@ public class HotPrepScript : MonoBehaviour
         {
             i4 -= 1;
         }
-        if (Input.GetKeyDown("e") && donezo == true)
+        if (i1 <= 0 && i2 <= 0 && i3 <= 0 && i4 <= 0 && donezo == true)
         {
             if (i1 == 0 && i2 == 0 && i3 == 0 && i4 == 0)
             {
+                table.sprite = finishsprite;
                 donezo = false;
                 completer.completed = true;
             }

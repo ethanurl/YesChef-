@@ -26,10 +26,12 @@ public class PauseMenu : MonoBehaviour
     }
     public void creditgoer()
     {
+        Time.timeScale = 1;
         StartCoroutine(LoaderLeveler(16));
     }
     public void mainmenuer()
     {
+        Time.timeScale = 1;
         PlayerStats.Errors = 0;
         PlayerStats.Completehold = 0;
         PlayerStats.Completed = 0;

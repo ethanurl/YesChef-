@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MusicScript : MonoBehaviour
 {
+    public AudioSource Music;
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerStats.Music == false)
+        {
+            Music.Play();
+            PlayerStats.Music = true;
+        }
     }
 
     // Update is called once per frame
@@ -26,5 +31,11 @@ public class MusicScript : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1);
         Destroy(this.gameObject);
+        PlayerStats.Music = false;
+    }
+    public void endmusic2()
+    {
+        Destroy(this.gameObject);
+        PlayerStats.Music = false;
     }
 }

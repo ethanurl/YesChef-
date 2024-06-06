@@ -10,5 +10,8 @@ public static class PlayerStats
     public static float Time { get; set; }
     public static float Volume { get; set; }
     public static bool Sound { get; set; }
+    public static float PlayerX { get; set; }
+    public static float PlayerZ { get; set; }
+    public static bool Music { get; set; }
     
 }

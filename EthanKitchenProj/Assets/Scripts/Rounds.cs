@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class Rounds : MonoBehaviour
 {
@@ -23,7 +21,7 @@ public class Rounds : MonoBehaviour
     public int errors = 0;
     public int errorstotal = 5;
     public int completed = 0;
-    public int completetotal = 10;
+    public int completetotal = 100;
     private Material currmat;
     public GameObject trashcan;
     public GameObject trashcanlined;
@@ -49,14 +47,18 @@ public class Rounds : MonoBehaviour
     public GameObject pastryhelp;
     public GameObject butcher;
     public GameObject butcherhelp;
-
+    public AudioSource ding;
+    private bool pauser = true;
     // Start is called before the first frame update
     void Start()
     {
         if (PlayerStats.Completed == 0)
         {
             PlayerStats.Time = 90;
+            PlayerStats.PlayerX = -10.81f;
+            PlayerStats.PlayerZ = -7.21f;
         }
+        transform.position = new Vector3 (PlayerStats.PlayerX, 1, PlayerStats.PlayerZ);
         if (newrandoms == null)
         Debug.Log("ok");
         newrandoms = GameObject.FindGameObjectsWithTag("Interactable");
@@ -87,34 +89,33 @@ public class Rounds : MonoBehaviour
         pastryhelp.SetActive(false);
         butcher.SetActive(true);
         butcherhelp.SetActive(false);
+        pausemenu.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (completed != PlayerStats.Completed)
+        {
+            ding.Play();
+        }
         errors = PlayerStats.Errors;
         completed = PlayerStats.Completed;
         timer.elapsedtime = PlayerStats.Time;
         //These are the win/loss condition. 
         //If errors is whatever the total is, the player loses!
         //If completed, the player wins.
-        if (errors == errorstotal)
+        if (errors >= errorstotal)
         {
             transition.newscene = 17;
-            PlayerStats.Errors = 0;
-            PlayerStats.Completehold = 0;
-            PlayerStats.Completed = 0;
-            PlayerStats.Time = 0;
         }
         if (completed == completetotal)
         {
             transition.newscene = 18;
             PlayerStats.Errors = 0;
-            PlayerStats.Completehold = 0;
-            PlayerStats.Completed = 0;
             PlayerStats.Time = 0;
         }
-        if (Time.realtimeSinceStartupAsDouble/round > roundtimer)
+        if (Time.realtimeSinceStartup/round > roundtimer)
         {
             if (changer)
             {
@@ -137,13 +138,13 @@ public class Rounds : MonoBehaviour
         {
             if (changer.name == "Trash")
             {
-                trashcanlined.SetActive(false);
-                trashcan.SetActive(true);
+                trashcanlined.SetActive(true);
+                trashcan.SetActive(false);
             }
             if (changer.name != "Trash")
             {
-                trashcanlined.SetActive(true);
-                trashcan.SetActive(false);
+                trashcanlined.SetActive(false);
+                trashcan.SetActive(true);
             }
             if (changer.name == "Grill")
             {
@@ -263,16 +264,50 @@ public class Rounds : MonoBehaviour
                     child.GetComponent<MeshRenderer>().enabled =  false;
                     PlayerStats.Errors = errors;
                     PlayerStats.Completehold = completed;
+                    PlayerStats.PlayerX = transform.position.x;
+                    PlayerStats.PlayerZ = transform.position.z;
                     transition.newscene = sceneswap;
                 }
         }
-        if (Input.GetKeyDown("escape")){
-            PlayerStats.Errors = errors;
-            PlayerStats.Completehold = completed;
-            Time.timeScale = 0;
-
+        if (Input.GetKeyDown("escape") && pauser == true)
+        {
+            Pause();
+        }
+        if (Input.GetKeyDown("escape") && pauser == false)
+        {
+            Unpause();
+        }
+        if (Time.timeScale == 0)
+        {
+            Invoke("Pauserfalse", 0);
+        }
+        if (PlayerStats.Time <= 0 || timer.elapsedtime <= 0)
+        {
+            transition.newscene = 18;
         }
     } 
+    public void Pause()
+    {
+        Debug.Log("yomama");
+        PlayerStats.Errors = errors;
+        PlayerStats.Completehold = completed;
+        pausemenu.enabled = true;
+        Time.timeScale = 0;
+        pauser = true;
+    }
+    public void Unpause()
+    {
+        Debug.Log("yodady");
+        PlayerStats.Errors = errors;
+        PlayerStats.Completehold = completed;
+        pausemenu.enabled = false;
+        Time.timeScale = 1;
+        pauser = true;
+    }
+    public void Pauserfalse()
+    {
+        pauser = false;
+    }
 }
 /*IF LEVELS GET TOO BIG THIS IS THE LEVEL LOADER
         if (child.GetComponent<MeshRenderer>().enabled == true){

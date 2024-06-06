@@ -15,6 +15,7 @@ public class ColdPrepScript : MonoBehaviour
     public Slider timer;
     bool failure = true;
     bool completely = true;
+    public Animator salad;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +60,26 @@ public class ColdPrepScript : MonoBehaviour
             {
                 picker += 1;
             }
+            if (Input.GetKeyDown("w"))
+            {
+                Invoke("NoSalad", 0.25f);
+                salad.SetFloat("Blend", 0.4f);
+            }
+            if (Input.GetKeyDown("a"))
+            {
+                Invoke("NoSalad", 0.25f);
+                salad.SetFloat("Blend", 0.1f);
+            }
+            if (Input.GetKeyDown("s"))
+            {
+                Invoke("NoSalad", 0.25f);
+                salad.SetFloat("Blend", 1f);
+            }
+            if (Input.GetKeyDown("d"))
+            {
+                Invoke("NoSalad", 0.25f);
+                salad.SetFloat("Blend", 0.7f);
+            }
         }
         
     }
@@ -81,5 +102,9 @@ public class ColdPrepScript : MonoBehaviour
         {
             order.Add("d");
         }
+    }
+    void NoSalad()
+    {
+        salad.SetFloat("Blend", 0f);
     }
 }

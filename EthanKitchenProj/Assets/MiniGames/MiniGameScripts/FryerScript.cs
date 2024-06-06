@@ -9,9 +9,6 @@ public class FryerScript : MonoBehaviour
     public Image rightim;
     public Slider leftsl;
     public Slider rightsl;
-    public Material emptymat;
-    public Material redmat;
-    public Material greenmat;
     public Returner returner;
     private float leftval;
     private float rightval;
@@ -24,8 +21,8 @@ public class FryerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        leftim.material = emptymat;
-        rightim.material = emptymat;
+        leftim.enabled = false;
+        rightim.enabled = false;
         leftsl.value = 0;
         rightsl.value = 0;
         GetVals();
@@ -44,19 +41,19 @@ public class FryerScript : MonoBehaviour
         }
         if (leftsl.value >= leftlowval && leftsl.value <= lefthighval)
         {
-            leftim.material = greenmat;
+            leftim.enabled = true;
         }
         if (rightsl.value >= rightlowval && rightsl.value <= righthighval)
         {
-            rightim.material = greenmat;
+            rightim.enabled = true;
         }
         if (leftsl.value >= lefthighval)
         {
-            leftim.material = redmat;
+            leftim.enabled = true;
         }
         if (rightsl.value >= righthighval)
         {
-            rightim.material = redmat;
+            rightim.enabled = true;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {

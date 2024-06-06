@@ -7,11 +7,12 @@ public class GrillScript : MonoBehaviour
 {
     public Image leftim;
     public Image rightim;
+    public Image leftmeat;
+    public Image rightmeat;
+    public Sprite donemeat;
+    public Sprite supadonemeat;
     public Slider leftsl;
     public Slider rightsl;
-    public Material emptymat;
-    public Material redmat;
-    public Material greenmat;
     public Returner returner;
     private float leftval;
     private float rightval;
@@ -24,8 +25,8 @@ public class GrillScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        leftim.material = emptymat;
-        rightim.material = emptymat;
+        leftim.enabled = false;
+        rightim.enabled = false;
         leftsl.value = 0;
         rightsl.value = 0;
         GetVals();
@@ -34,7 +35,6 @@ public class GrillScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log((leftsl.value, "/n", rightsl.value));
         if (Input.GetKey("e"))
         {
             rightsl.value += Time.deltaTime/5;
@@ -45,19 +45,23 @@ public class GrillScript : MonoBehaviour
         }
         if (leftsl.value >= leftlowval && leftsl.value <= lefthighval)
         {
-            leftim.material = greenmat;
+            leftim.enabled = true;
+            leftmeat.sprite = donemeat;
         }
         if (rightsl.value >= rightlowval && rightsl.value <= righthighval)
         {
-            rightim.material = greenmat;
+            rightim.enabled = true;
+            rightmeat.sprite = donemeat;
         }
         if (leftsl.value >= lefthighval)
         {
-            leftim.material = redmat;
+            leftim.enabled = false;
+            leftmeat.sprite = supadonemeat;
         }
         if (rightsl.value >= righthighval)
         {
-            rightim.material = redmat;
+            rightim.enabled = false;
+            rightmeat.sprite = supadonemeat;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -80,19 +84,19 @@ public class GrillScript : MonoBehaviour
     {
         if (leftlowval == 0)
         {
-            leftlowval = Random.Range(0.4f, 0.7f);
+            leftlowval = Random.Range(0.4f, 0.65f);
         }
         if (lefthighval == 0)
         {
-            lefthighval = Random.Range(0.75f, 1.0f);
+            lefthighval = Random.Range(0.65f, 0.8f);
         }
         if (rightlowval == 0)
         {
-            rightlowval = Random.Range(0.4f, 0.7f);
+            rightlowval = Random.Range(0.4f, 0.65f);
         }
         if (righthighval == 0)
         {
-            righthighval = Random.Range(0.75f, 1.0f);
+            righthighval = Random.Range(0.65f, 0.8f);
         }
     }
 }

@@ -15,7 +15,7 @@ public class MainMenuScript : MonoBehaviour
     
     public void starter()
     {
-        StartCoroutine(LoaderLeveler(13));
+        StartCoroutine(LoaderLeveler(19));
     }
     public void optionwonderer()
     {

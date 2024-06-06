@@ -400,6 +400,7 @@
 "Assets/Resources/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/Resources/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
 "Assets/Scripts/Completed.cs"
+"Assets/Scripts/ControlsScript.cs"
 "Assets/Scripts/CreditsMenu.cs"
 "Assets/Scripts/Errors.cs"
 "Assets/Scripts/Interactables.cs"
@@ -413,6 +414,7 @@
 "Assets/Scripts/Rounds.cs"
 "Assets/Scripts/Timer.cs"
 "Assets/Scripts/Transition.cs"
+"Assets/Scripts/WinScript.cs"
 -langversion:9.0
 
 /deterministic

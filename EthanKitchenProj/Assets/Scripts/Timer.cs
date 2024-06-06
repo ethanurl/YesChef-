@@ -21,12 +21,13 @@ public class Timer : MonoBehaviour
             elapsedtime = PlayerStats.Time + 0.5f;
         };
         if (Input.GetKeyDown("escape")){
-            elapsedtime = PlayerStats.Time + 0.5f;
+            elapsedtime = PlayerStats.Time + 0.05f;
         }
         elapsedtime -= Time.deltaTime;
         PlayerStats.Time = elapsedtime;
         int minutes = Mathf.FloorToInt(elapsedtime / 60);
         int seconds = Mathf.FloorToInt(elapsedtime % 60);
         timerText.text=string.Format("{0:00}:{1:00}", minutes, seconds);
+
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class TrashScript : MonoBehaviour
@@ -8,6 +7,8 @@ public class TrashScript : MonoBehaviour
     float completeness = 0;
     public Returner returner;
     public GameObject slicer;
+    public SpriteRenderer trashcan;
+    public Sprite trashlined;
     Transform slt;
     float wcomplete = 0;
     float acomplete = 0;
@@ -76,6 +77,10 @@ public class TrashScript : MonoBehaviour
                     dcomplete += Time.deltaTime*15;
                 }
             }
+        }
+        if (completeness >= 88)
+        {
+            trashcan.sprite = trashlined;
         }
         if (Input.GetKey("e"))
         {

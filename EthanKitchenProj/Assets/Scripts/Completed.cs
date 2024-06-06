@@ -18,7 +18,7 @@ public class Completed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        completedtext.text = (PlayerStats.Completed.ToString()+"/"+MyPlayer.completetotal.ToString()).ToString();
+        completedtext.text = PlayerStats.Completed.ToString();
         playercompleted.value = Mathf.Floor(MyPlayer.completed)/Mathf.Floor(MyPlayer.completetotal);
     }
 }

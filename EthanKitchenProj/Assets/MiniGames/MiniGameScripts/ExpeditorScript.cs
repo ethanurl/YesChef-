@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,25 +7,29 @@ using UnityEngine.UI;
 
 public class ExpeditorScript : MonoBehaviour
 {
-    public GameObject Plate;
-    public Material RedMat;
-    public Material GreenMat;
-    public UnityEngine.UI.Image BackgroundCol;
-    public UnityEngine.UI.Image FillCol;
+    public Image Plate;
+    public Sprite blueplate;
+    public Sprite redplate;
+    public Image BackgroundCol;
+    public Image FillCol;
     public Slider timer;
-    public TextMeshProUGUI text;
     public Returner completer;
     public GameObject UI;
     Color BgRed = new Color(140f, 114f, 114f, 255f);
     Color FillRed = new Color(255f, 28f, 0f, 255f);
-    Color BgGreen = new Color(121f, 149f, 112f, 255f);
-    Color FillGreen = new Color(5f, 241f, 0f, 255f);
+    Color Bgblue = new Color(0f, 0f, 112f, 255f);
+    Color Fillblue = new Color(5f, 50f, 245f, 255f);
     Color BgGrey = new Color(174f, 174f, 174f, 255f);
     Color FillBlack = new Color(0f, 0f, 0f, 255f);
     int totalplates = 0;
     int platecolor = 2;
     int correct = 2;
     bool completely = true;
+    public Image foodsprite;
+    public Sprite pizza;
+    public Sprite meat;
+    public Sprite steak;
+    public int foodrand;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,8 +52,7 @@ public class ExpeditorScript : MonoBehaviour
         {
             BackgroundCol.color = BgRed;
             FillCol.color = FillRed;
-            Plate.GetComponent<MeshRenderer>().material = RedMat;
-            text.text = "Press A!";
+            Plate.sprite = redplate;
             if (Input.GetKeyDown("a"))
             {
                 correct = 0;
@@ -62,10 +64,9 @@ public class ExpeditorScript : MonoBehaviour
         }
         if (platecolor == 0)
         {
-            BackgroundCol.color = BgGreen;
-            FillCol.color = FillGreen;
-            Plate.GetComponent<MeshRenderer>().material = GreenMat;
-            text.text = "Press D!";
+            BackgroundCol.color = Bgblue;
+            FillCol.color = Fillblue;
+            Plate.sprite = blueplate;
             if (Input.GetKeyDown("d"))
             {
                 correct = 0;   
@@ -91,13 +92,26 @@ public class ExpeditorScript : MonoBehaviour
         if (totalplates == 3 && completely == true)
         {
             completely = false;
-            Plate.SetActive(false);
+            Plate.enabled = false;
             UI.SetActive(false);
             completer.completed = true;
         }
     }
     void GetPlate()
     {
+        foodrand = Random.Range(0,3);
+        if (foodrand == 0)
+        {
+            foodsprite.sprite = pizza;
+        }
+        if (foodrand == 1)
+        {
+            foodsprite.sprite = meat;
+        }
+        if (foodrand == 2)
+        {
+            foodsprite.sprite = steak;
+        }
         correct = 2;
         timer.value = 0;
         platecolor = Random.Range(0, 2);

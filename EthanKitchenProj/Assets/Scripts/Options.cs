@@ -46,7 +46,7 @@ public class Options : MonoBehaviour
             sliderer.value = 0f;
             AudioListener.volume = slidervalue;
         }
-        if (slidervalue == 0f){
+        if (sliderer.value == 0f){
             sliderer.value = slidervalue;
             AudioListener.volume = slidervalue;
         }

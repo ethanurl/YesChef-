@@ -1,21 +1,21 @@
  using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class ReachInScript : MonoBehaviour
 {
     private GameObject UIchild;
     public Returner returner;
-    public TextMeshProUGUI text;
+    public Image changer;
     bool completely = true;
     // Start is called before the first frame update
     void Start()
     {
         UIchild = this.transform.GetChild(Random.Range(0,20)).gameObject;
-        text.text = UIchild.name;
+        Image yomamasprite = UIchild.GetComponent<Image>();
+        changer.sprite = yomamasprite.sprite;
     }
 
     // Update is called once per frame

@@ -16,16 +16,22 @@ public class PastryScript : MonoBehaviour
     private bool reacher = true;
     public TextMeshProUGUI text;
     public Returner returner;
+    public Image pizza;
+    public Sprite pizza2;
+    public Sprite pizza3;
+    public Sprite pizza4;
+    public Sprite pizzafin;
+    public RectTransform roller;
     // Start is called before the first frame update
     void Start()
     {
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Debug.Log(("topval", topvalreached.ToString(), "\n", "botval", botvalreached.ToString()));
         slider.value = value;
-        text.text = (5 - valsreached).ToString();
+        text.text = ("Roll over the pizza!" + "\n" + (5 - valsreached)).ToString();
         if (topvalreached == false)
         {
             if (value >= topval)
@@ -50,16 +56,34 @@ public class PastryScript : MonoBehaviour
         if (Input.GetKey("w"))
         {
             value += Time.deltaTime/3;
+            roller.Translate(Vector3.up);
         }
         if (Input.GetKey("s"))
         {
             value -= Time.deltaTime/3;
+            roller.Translate(Vector3.down);
         }
         if (valsreached == 5 & reacher == true)
         {
             reacher = false;
             text.text = "Done!";
             returner.completed = true;
+        }
+        if (valsreached == 1)
+        {
+            pizza.sprite = pizza2;
+        }
+        if (valsreached == 2)
+        {
+            pizza.sprite = pizza3;
+        }
+        if (valsreached == 3)
+        {
+            pizza.sprite = pizza4;
+        }
+        if (valsreached == 4)
+        {
+            pizza.sprite = pizzafin;
         }
     }
 }

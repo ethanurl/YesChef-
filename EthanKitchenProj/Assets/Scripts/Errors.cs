@@ -17,7 +17,7 @@ public class Errors : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        errortext.text = MyPlayer.errors.ToString();
+        errortext.text = (MyPlayer.errors.ToString() + "/" + MyPlayer.errorstotal).ToString();
         playererror.value = Mathf.Floor(MyPlayer.errors)/Mathf.Floor(MyPlayer.errorstotal);
     }
 }
